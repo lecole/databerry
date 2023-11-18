@@ -1,26 +1,26 @@
-name: Sync Datasources
+# name: Sync Datasources
 
-on:
-  workflow_dispatch:
-  schedule:
-    # every day 2am
-    - cron: '0 2 * * *'
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     # every day 2am
+#     - cron: '0 2 * * *'
 
-jobs:
-  run:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./apps/dashboard
-    env:
-      DATABASE_URL: '${{ secrets.DATABASE_URL }}'
-      REDIS_URL: '${{ secrets.REDIS_URL }}'
-      EMAIL_FROM: '${{ secrets.EMAIL_FROM }}'
-      EMAIL_SERVER: '${{ secrets.EMAIL_SERVER }}'
-      NEXT_PUBLIC_DASHBOARD_URL: '${{ secrets.NEXT_PUBLIC_DASHBOARD_URL }}'
+# jobs:
+#   run:
+#     runs-on: ubuntu-latest
+#     defaults:
+#       run:
+#         working-directory: ./apps/dashboard
+#     env:
+#       DATABASE_URL: '${{ secrets.DATABASE_URL }}'
+#       REDIS_URL: '${{ secrets.REDIS_URL }}'
+#       EMAIL_FROM: '${{ secrets.EMAIL_FROM }}'
+#       EMAIL_SERVER: '${{ secrets.EMAIL_SERVER }}'
+#       NEXT_PUBLIC_DASHBOARD_URL: '${{ secrets.NEXT_PUBLIC_DASHBOARD_URL }}'
 
-    steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.2
-      - run: pnpm i --frozen-lockfile
-      - run: pnpm turbo run syncDatasources
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: pnpm/action-setup@v2.2.2
+#       - run: pnpm i --frozen-lockfile
+#       - run: pnpm turbo run syncDatasources
